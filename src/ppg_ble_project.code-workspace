@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "ppg_ble_project",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"new": "cpp"
+		}
+	}
+}
