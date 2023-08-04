@@ -4,19 +4,20 @@
 #include "hrSensor.h"
 
 #define WAKEUP_BUTTON GPIO_NUM_33
+#define LED_BATTERY GPIO_NUM_25
 #define BUTTON_PIN_BITMASK 0x200000000
 const int LONG_PRESS_TIME = 1000;
 
 class Button {
     public:
         void setup(void);
-        bool update(void);
+        void update(HeartRateSensor cambien);
     private:
         int bootCount = 0;
-        int lastState;
-        int currentState;
-        unsigned long pressedTime ;
-        bool isPressing;
-        bool isLongDetected;
+        int lastState = LOW;  // the previous state from the input pin
+        int currentState;     // the current reading from the input pin
+        unsigned long pressedTime  = 0;
+        bool isPressing = false;
+        bool isLongDetected = false;
 };
 #endif

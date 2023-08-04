@@ -12,7 +12,7 @@ void HeartRateSensor::begin_sensor()
     if (!particleSensor.begin(Wire, I2C_SPEED_FAST))
     {
       Serial.println("MAX30105 was not found. Please check wiring/power. ");
-      while (1);
+      while(1);
     }
 }
 

@@ -13,6 +13,7 @@ void setup() {
   heartRateSensor.setup_sensor();
   ble.initBLE();
   button.setup();
+  delay(20);                      // Prevent button debounce
 }
 
 void loop() {
@@ -26,11 +27,11 @@ void loop() {
       ble.pCharacteristic->notify();
     }
   }
-  if(button.update())
+  
+  if(!ble._BLEClientConnected)
   {
-    heartRateSensor.sensor_sleep();
-    esp_deep_sleep_start();
+    ble.reconnect();  
   }
-    
+  button.update(heartRateSensor);
 }
 
